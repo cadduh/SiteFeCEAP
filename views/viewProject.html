@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+
+<body id="{{ bodyId }}">
+    <div id="container">
+
+        {% block content %}  
+        <header>
+            <a href="/">
+                <img id="logo" src="FeCEAP-logoAlef2.svg" alt="FeCEAP-logo">
+    
+            </a>
+            <nav>
+                <a href="/" class="button" onclick="onOff()">Página Inicial</a>
+            </nav>
+        </header>
+        
+        
+        
+        {% endblock %}
+    
+    </div>
+    
+
+</body>
+</html>
