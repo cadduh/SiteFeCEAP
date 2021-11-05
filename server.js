@@ -93,8 +93,41 @@ server.get("/projetos", function(req, res){
     })
 })
 
-server.get("/view", function(req, res){
-    return res.render("viewProject.html");
+server.get("/view/user", function(req, res){
+    bd.all("SELECT * FROM projetos WHERE id= "+req.query.id+"", function(err, rows){
+        if(err) return console.log(err)
+           const name = rows[0].title
+           const category = rows[0].category
+           const img = rows[0].img
+           const description = rows[0].description
+           const url = rows[0].url
+           id = rows[0].id
+           return res.render("viewProject.html",{ name,category,img,description,url,id});
+        })
+    });
+
+
+
+server.post("/view/user", function(req,res){
+    function ativo() {
+        console.log("aaaaaaaaaaaa")
+    }
+    const query = `
+    UPDATE projetos SET
+        img = ?,
+        title = ?,
+        category = ?,
+        description = ?,
+        url = ?
+        WHERE id = ?`;
+    const values = [req.body.img, req.body.title, req.body.category, req.body.description, req.body.url, id];
+    bd.run(query, values, function(err){
+        if(err) return console.log(err);        
+        console.log(req.query.id);
+    });
+
+    return res.redirect("/");
+    
 });
 
 //metódo POST
@@ -109,7 +142,7 @@ server.post("/", function(req,res){
         description,
         url
     ) VALUES (?,?,?,?,?)` ;
-    const values = [req.body.image, req.body.title, req.body.category, req.body.description, req.body.url];
+    const values = [req.body.img, req.body.title, req.body.category, req.body.description, req.body.url];
     bd.run(query, values, function(err){
         if(err) return console.log(err);        
         console.log("Dado armazenado com sucesso!");

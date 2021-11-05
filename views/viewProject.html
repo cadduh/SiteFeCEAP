@@ -14,15 +14,46 @@
     <div id="container">
 
         {% block content %}  
-        <header>
-            <a href="/">
-                <img id="logo" src="FeCEAP-logoAlef2.svg" alt="FeCEAP-logo">
-    
-            </a>
-            <nav>
-                <a href="/" class="button" onclick="onOff()">Página Inicial</a>
-            </nav>
-        </header>
+ 
+
+        <div id="modal" >
+            <div class="content">
+                <h1>Editar Projeto</h1>
+        
+                <form action="/view/user"  method="post">
+                    
+                    <div class="input-wrapper">
+                        <label for="title">Título do Projeto</label>
+                        <input type="text" name="title" value="{{ name }}">
+                    </div>
+        
+                    <div class="input-wrapper">
+                        <label for="category">Categoria</label>
+                        <input type="text" name="category" value="{{ category }}">
+                    </div>
+        
+                    <div class="input-wrapper">
+                        <label for="img">Link da Imagem</label>
+                        <input type="url" name="img" value="{{ img }}">
+                    </div>
+        
+                    <div class="input-wrapper">
+                        <label for="description">Descriçao do Projeto</label>
+                        <textarea name="description" cols="30" rows="10">{{description}}</textarea>
+                    </div>
+        
+                    <div class="input-wrapper">
+                        <label for="url">Link do Projeto</label>
+                        <input type="url" name="url" value="{{ url }}"  >
+                    </div>
+        
+                    <button class="button" onclick="ativo()">Excluir</button>
+                    <button class="button">Salvar</button>
+        
+        
+                </form>
+            </div>
+        </div>
         
         
         
@@ -30,6 +61,7 @@
     
     </div>
     
+    <script src="server.js"></script>
 
 </body>
 </html>
